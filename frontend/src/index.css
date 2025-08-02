@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* index.css */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Align messages to the left */
+.chat-start {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* Align messages to the right */
+.chat-end {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.chat {
+  display: flex;
+  flex-direction: row; /* Row layout for message bubbles */
+  margin-bottom: 10px; /* Space between messages */
+}
