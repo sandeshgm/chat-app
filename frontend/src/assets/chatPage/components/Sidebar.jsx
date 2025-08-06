@@ -292,7 +292,6 @@ const Sidebar = ({ onSelectedUser }) => {
           })
         ) : chatUser.length === 0 ? (
           <div className="font-bold items-center flex flex-col text-xl text-yellow-500 mt-4">
-            <h1>Why are you Alone!!🤔</h1>
             <h1>Search username to chat</h1>
           </div>
         ) : (
