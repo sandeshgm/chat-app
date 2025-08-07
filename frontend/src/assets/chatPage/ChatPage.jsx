@@ -51,11 +51,13 @@ const ChatPage = () => {
         overflow-hidden"
       >
         {/* Sidebar */}
-        {(isSidebarVisible || !isMobile) && (
-          <div className="w-full md:w-1/3 transition-all duration-300 ease-in-out">
-            <Sidebar onSelectedUser={handleUserSelect} />
-          </div>
-        )}
+        <div
+          className={`${
+            isSidebarVisible || !isMobile ? "block" : "hidden"
+          } w-full md:w-1/3 transition-all duration-300 ease-in-out`}
+        >
+          <Sidebar onSelectedUser={handleUserSelect} />
+        </div>
 
         {/* Divider on md+ */}
         {!isMobile && selectedUser && (
@@ -63,7 +65,7 @@ const ChatPage = () => {
         )}
 
         {/* Message Container */}
-        {/* <div
+        <div
           className={`flex-auto ${
             selectedUser ? "flex" : isMobile ? "hidden" : "flex"
           }`}
@@ -73,21 +75,7 @@ const ChatPage = () => {
           }}
         >
           <MessageContainer onBackUser={handleShowSideBar} />
-        </div> */}
-        {(selectedUser || !isMobile) && (
-          <div
-            className="flex-auto flex"
-            style={{
-              minWidth: "0",
-              flexGrow: 1,
-            }}
-          >
-            <MessageContainer
-              onBackUser={handleShowSideBar}
-              selectedUser={selectedUser} // ✅ pass this too
-            />
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
