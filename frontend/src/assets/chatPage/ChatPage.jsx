@@ -5,29 +5,29 @@ import MessageContainer from "./components/MessageContainer";
 const ChatPage = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  // const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth < 768);
+  //   };
 
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   const handleUserSelect = (user) => {
     setSelectedUser(user);
-    if (isMobile) {
-      setIsSidebarVisible(false);
-    }
+    // if (isMobile) {
+    //   setIsSidebarVisible(false);
+    // }
   };
 
   const handleShowSideBar = () => {
-    setIsSidebarVisible(true);
+    //setIsSidebarVisible(true);
     setSelectedUser(null);
   };
 
@@ -51,21 +51,28 @@ const ChatPage = () => {
         overflow-hidden"
       >
         {/* Sidebar */}
-        <div
+        {/* <div
           className={`${
             isSidebarVisible || !isMobile ? "block" : "hidden"
           } w-full md:w-1/3 transition-all duration-300 ease-in-out`}
         >
           <Sidebar onSelectedUser={handleUserSelect} />
+        </div> */}
+        <div
+          className={`w-full md:w-1/3 ${
+            selectedUser ? "hidden md:block" : "block"
+          }`}
+        >
+          <Sidebar onSelectedUser={handleUserSelect} />
         </div>
 
         {/* Divider on md+ */}
-        {!isMobile && selectedUser && (
+        {/* {!isMobile && selectedUser && (
           <div className="hidden md:block w-px bg-gray-300/50"></div>
-        )}
+        )} */}
 
         {/* Message Container */}
-        <div
+        {/* <div
           className={`flex-auto ${
             selectedUser ? "flex" : isMobile ? "hidden" : "flex"
           }`}
@@ -73,6 +80,11 @@ const ChatPage = () => {
             minWidth: "0", // Prevent the overflow on the right
             flexGrow: 1, // Make it take up the remaining space
           }}
+        >
+          <MessageContainer onBackUser={handleShowSideBar} />
+        </div> */}
+        <div
+          className={`flex-auto ${selectedUser ? "block" : "hidden md:block"}`}
         >
           <MessageContainer onBackUser={handleShowSideBar} />
         </div>
