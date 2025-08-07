@@ -51,13 +51,11 @@ const ChatPage = () => {
         overflow-hidden"
       >
         {/* Sidebar */}
-        <div
-          className={`${
-            isSidebarVisible || !isMobile ? "block" : "hidden"
-          } w-full md:w-1/3 transition-all duration-300 ease-in-out`}
-        >
-          <Sidebar onSelectedUser={handleUserSelect} />
-        </div>
+        {(isSidebarVisible || !isMobile) && (
+          <div className="w-full md:w-1/3 transition-all duration-300 ease-in-out">
+            <Sidebar onSelectedUser={handleUserSelect} />
+          </div>
+        )}
 
         {/* Divider on md+ */}
         {!isMobile && selectedUser && (
