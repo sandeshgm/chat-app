@@ -63,7 +63,7 @@ const ChatPage = () => {
         )}
 
         {/* Message Container */}
-        <div
+        {/* <div
           className={`flex-auto ${
             selectedUser ? "flex" : isMobile ? "hidden" : "flex"
           }`}
@@ -73,7 +73,21 @@ const ChatPage = () => {
           }}
         >
           <MessageContainer onBackUser={handleShowSideBar} />
-        </div>
+        </div> */}
+        {(selectedUser || !isMobile) && (
+          <div
+            className="flex-auto flex"
+            style={{
+              minWidth: "0",
+              flexGrow: 1,
+            }}
+          >
+            <MessageContainer
+              onBackUser={handleShowSideBar}
+              selectedUser={selectedUser} // ✅ pass this too
+            />
+          </div>
+        )}
       </div>
     </div>
   );
